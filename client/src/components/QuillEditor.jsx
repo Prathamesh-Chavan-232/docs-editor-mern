@@ -1,9 +1,9 @@
 import React from "react";
 import "../css/Quill.css";
 import Quill from "quill";
-import { useEffect, useRef } from "react";
 import "quill/dist/quill.snow.css";
 import { io } from "socket.io-client";
+import { useEffect, useRef } from "react";
 
 export default function QuillEditor() {
   const TOOLBAR_OPTIONS = [
@@ -19,17 +19,17 @@ export default function QuillEditor() {
     ["clean"],
   ];
 
-  useEffect(() => {
-    const socket = io("http://localhost:8080/");
+  const wrapperRef = useRef();
+
+  function connectToServer() {
+    const socket = io("http://localhost:3001/");
+    socket.on("connection", () => {});
     return () => {
       console.log("trying to connect");
       socket.disconnect();
     };
-  }, []);
-
-  const wrapperRef = useRef();
-
-  useEffect(() => {
+  }
+  function displayEditor() {
     const editor = document.createElement("div");
     wrapperRef.current.append(editor);
     new Quill(editor, {
@@ -39,9 +39,13 @@ export default function QuillEditor() {
     });
 
     return () => {
-      wrapperRef.current.innerHTML = "";
+      wrapperRef.innerHTML = "";
     };
-  }, []);
+  }
+  useEffect(() => {
+    connectToServer();
+    displayEditor();
+  });
 
   return <div className="container" ref={wrapperRef}></div>;
 }

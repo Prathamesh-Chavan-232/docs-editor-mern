@@ -1,10 +1,16 @@
-const io = require("socket.io")(8080, {
+const app = require("express")();
+const http = require("http").Server(app);
+const io = require("socket.io")(http, {
   cors: {
-    origin: "http://127.0.0.1:5173/",
+    origin: "http://localhost:3000/",
     methods: ["GET", "POST"],
   },
 });
 
 io.on("connection", (socket) => {
-  console.log("connected");
+  console.log("a user connected");
+});
+
+http.listen(3001, () => {
+  console.log("listening on *:3001");
 });
