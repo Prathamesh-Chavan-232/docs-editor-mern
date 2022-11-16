@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Header.css";
-import { Button, IconButton } from "@material-tailwind/react";
 export default function Header() {
   return (
     <div className="flex items-center">

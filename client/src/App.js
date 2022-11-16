@@ -19,8 +19,8 @@ function App() {
   //     </Route>
   //   </Switch>
   // </Router>;
-  return <Header />;
-  // return <QuillEditor />;
+  // return <Header />;
+  return <QuillEditor />;
 }
 
 export default App;
