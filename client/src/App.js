@@ -4,9 +4,8 @@
 //   Route,
 //   Redirect,
 // } from "react-router-dom";
-// import "./css/App.css";
-// import TextEditor from "./TextEditor";
 // import { v4 as uuidV4 } from "uuid";
+// import TextEditor from "./TextEditor";
 import Header from "./components/Header";
 import QuillEditor from "./components/QuillEditor";
 function App() {
@@ -20,7 +19,7 @@ function App() {
   //     </Route>
   //   </Switch>
   // </Router>;
-  return <Header></Header>;
+  return <Header />;
   // return <QuillEditor />;
 }
 
