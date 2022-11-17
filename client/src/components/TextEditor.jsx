@@ -1,4 +1,5 @@
 import Quill from "quill";
+import "../css/Quill.css";
 import "quill/dist/quill.snow.css";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
