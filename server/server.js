@@ -8,7 +8,11 @@ const io = require("socket.io")(http, {
 });
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
+  socket.on("send-changes", (delta) => {
+    console.log(delta);
+    socket.broadcast.emit("recieve-changes", delta);
+  });
+  // console.log("a user connected");
 });
 
 http.listen(3001, () => {
